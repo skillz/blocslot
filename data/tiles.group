@@ -1,0 +1,48 @@
+
+CIwResGroup
+{
+	name "tiles"
+
+	// General images
+	"textures/background.bmp"
+	"textures/logo.bmp"
+	"textures/star.bmp"
+	"textures/touchscreenRotL.bmp"
+	"textures/touchscreenRotR.bmp"
+	"textures/touchscreenMoveL.bmp"
+	"textures/touchscreenMoveR.bmp"
+	"textures/touchscreenMoveDown.bmp"
+	"textures/tiles48/tiles48#.bmp"
+	"textures/tiles48/tiles48#green.bmp"
+	"textures/tiles48/tiles48#red.bmp"
+	"textures/tiles48/tiles48#lt_blue.bmp"
+	"textures/tiles48/tiles48#purple.bmp"
+	"textures/tiles48/tiles48#yellow.bmp"
+	"textures/tiles12/tiles12#.bmp"
+	"textures/tiles12/tiles12#green.bmp"
+	"textures/tiles12/tiles12#red.bmp"
+	"textures/tiles12/tiles12#lt_blue.bmp"
+	"textures/tiles12/tiles12#purple.bmp"
+	"textures/tiles12/tiles12#yellow.bmp"
+	"textures/tiles16/tiles16#.bmp"
+	"textures/tiles16/tiles16#green.bmp"
+	"textures/tiles16/tiles16#red.bmp"
+	"textures/tiles16/tiles16#lt_blue.bmp"
+	"textures/tiles16/tiles16#purple.bmp"
+	"textures/tiles16/tiles16#yellow.bmp"
+	"textures/tiles24/tiles24#.bmp"
+	"textures/tiles24/tiles24#green.bmp"
+	"textures/tiles24/tiles24#red.bmp"
+	"textures/tiles24/tiles24#lt_blue.bmp"
+	"textures/tiles24/tiles24#purple.bmp"
+	"textures/tiles24/tiles24#yellow.bmp"
+	"textures/tiles32/tiles32#.bmp"
+	"textures/tiles32/tiles32#green.bmp"
+	"textures/tiles32/tiles32#red.bmp"
+	"textures/tiles32/tiles32#lt_blue.bmp"
+	"textures/tiles32/tiles32#purple.bmp"
+	"textures/tiles32/tiles32#yellow.bmp"
+
+	fonts/font.gxfont
+	fonts/font_small.gxfont
+}

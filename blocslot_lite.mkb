@@ -1,0 +1,7 @@
+#!/usr/bin/env mkb
+
+subprojects
+{
+    iw2d_lite
+    blocslot
+}

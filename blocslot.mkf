@@ -1,0 +1,51 @@
+assets
+{
+    [default]
+    (data)
+    splashscreen.jpg
+
+    #Deploy .group.bin files from the 'data-ram/data-gles1' directory if they
+    #have been written there by running the application in resource building
+    #mode, otherwise deploy pre-built binaries from the 'data' directory.
+    #
+    #For your own application, you are likely to want only the
+    #'data-ram/data-gles1' directory specified here.
+    #
+    #See the IwResManager documentation for more information on resource building.
+    (data-ram/data-sw, data-ram/data-gles1)
+    tiles.group.bin
+
+    [artbuild]
+    (data)
+    .
+}
+
+deployments
+{
+    assets=default
+    icon=icons
+
+    [artbuild]
+    win32
+    assets=artbuild
+}
+
+files
+{
+    [Source]
+    (source)
+    main.cpp
+    effects.cpp
+    effects.h
+    game.cpp
+    game.h
+    rendering.cpp
+    rendering.h
+    localise.cpp
+    localise.h
+    titlescreen.h
+
+    [Data]
+    (data)
+    tiles.group
+}

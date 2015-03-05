@@ -1,0 +1,14 @@
+# Marmalade
+build_*
+run_*
+project_*
+*.bak
+
+# OS files
+.DS_Store
+._.*
+Thumbs.db
+Desktop.ini
+
+# Generic
+*.swp

@@ -1,0 +1,9 @@
+#!/usr/bin/env mkb
+
+define IW_USE_LEGACY_MODULES
+
+subprojects
+{
+    iw2d
+    blocslot
+}
