@@ -1,6 +1,6 @@
 #category: Games
-BlocSlot
-========
+BlocSlot (with Skillz)
+================
 
 BlocSlot is a simple 2D puzzle game that demonstrates a great deal
 of the functionality provided by the Marmalade C++ SDK.  The aim
@@ -13,3 +13,6 @@ bitmapped images and fonts on the screen.  It shows how keypad or
 touchscreen inputs can be detected and also serves to illustrate
 how it is possible to write an app that can automatically adjust
 to many screen resolutions and orientations.
+
+This version of BlocSlot is integrated with Skillz, see README.md
+for more information.
