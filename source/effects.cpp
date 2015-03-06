@@ -57,7 +57,7 @@ void FloatText::Render()
 ExplosionFragment::ExplosionFragment(CIwVec2 const & startPos, CIwVec2 const & startVel, int _colour)
 {
     colour = _colour;
-    timer = rand() % 200;
+    timer = random() % 200;
     pos = startPos;
     vel = startVel;
 

@@ -6,6 +6,7 @@ CIwResGroup
 	// General images
 	"textures/background.bmp"
 	"textures/logo.bmp"
+	"textures/play.bmp"
 	"textures/star.bmp"
 	"textures/touchscreenRotL.bmp"
 	"textures/touchscreenRotR.bmp"

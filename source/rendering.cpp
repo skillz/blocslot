@@ -19,6 +19,7 @@
 CIw2DImage* backgroundImage;
 CIw2DImage* starImage;
 CIw2DImage* logoImage;
+CIw2DImage* playImage;
 CIw2DImage* tileImage[MAX_NUM_COLOURS];
 CIw2DImage* touchscreenButtonImage[5];
 CIw2DFont* font;
@@ -31,6 +32,7 @@ void CleanupImages()
     delete backgroundImage;
     delete starImage;
     delete logoImage;
+    delete playImage;
 
     int i;
     for (i=0; i<MAX_NUM_COLOURS; i++)
@@ -52,6 +54,7 @@ void SetupImages(int tileSize)
 
     starImage = Iw2DCreateImageResource("star");
     logoImage = Iw2DCreateImageResource("logo");
+    playImage = Iw2DCreateImageResource("play");
 
     const char* colourNames[] =
     {

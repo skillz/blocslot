@@ -18,16 +18,22 @@
 #include "s3ePointer.h"
 #include "s3eDevice.h"
 
+#include "SkillzSDK.h"
+
 // Simple class representing the title screen. Handles user input and rendering whilst on the title screen
 class TitleScreen
 {
 private:
     int timer;
+    int playX;
+    int playY;
 
 public:
     TitleScreen()
     {
         timer = 0;
+        playX = 0;
+        playY = 0;
     }
 
     void Update(int deltaTimeMs)
@@ -47,13 +53,29 @@ public:
             }
         }
 
+        bool playbuttonPressed = false;
+        if (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_PRESSED)
+        {
+            int x = s3ePointerGetX();
+            int y = s3ePointerGetY();
+            int width = playImage->GetWidth();
+            int height = playImage->GetHeight();
+
+            if ((x >= playX & x <= playX + width)
+                & (y >= playY & y <= playY + height)
+                )
+            {
+                playbuttonPressed = true;
+            }
+        }
+
         if ((s3eKeyboardGetState(s3eKeyAbsGameA) & S3E_KEY_STATE_PRESSED)
          || (s3eKeyboardGetState(s3eKeyAbsASK) & S3E_KEY_STATE_PRESSED)
-         || (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_PRESSED)
+         || playbuttonPressed
            )
         {
-            // Start game
-            g_GameMode = MODE_GAMEPLAY;
+            // Launch Skillz
+            SkillzLaunch(S3eSkillzPortrait);
         }
     }
 
@@ -77,6 +99,11 @@ public:
         // Draw a sprite at the specified position, using the specified material.
         // The size of the sprite is taken from the size of the texture.
         Iw2DDrawImage(logoImage, CIwSVec2(x, y));
+
+        // Draw a play button to start Skillz
+        playX = x;
+        playY = y + (displayHeight / 2);
+        Iw2DDrawImage(playImage, CIwSVec2(playX, playY));
     }
 };
 

@@ -22,6 +22,8 @@
 
 #include <time.h>
 
+#include "SkillzSDK.h"
+
 // Level progression settings
 // Gravity is the number of milliseconds before the piece is automatically moved down one square
 // Colours per level is the number of different colours used. This shouldn't decrease, else the player might be left with pieces they can't get rid of.
@@ -562,8 +564,8 @@ int Grid::CheckForExplosions(int criticalMass, CIwVec2 & centre)
                 {
                     CIwVec2 p = (CIwVec2(x,y) << IW_GEOM_POINT) + CIwVec2(IW_FIXED(0.5), IW_FIXED(0.5));
                     CIwVec2 v = (p - centre);
-                    v.x += rand() % 2000 - 1000;
-                    v.y += rand() % 2000 - 1000;
+                    v.x += random() % 2000 - 1000;
+                    v.y += random() % 2000 - 1000;
                     v.Normalise();
 
                     g_EffectsManager->Add(new ExplosionFragment(p, v * IW_FIXED(27), Get(x,y).col));
@@ -728,8 +730,10 @@ void PuzzleGame::CreateRandomPiece(Grid & newPiece, int numColours)
     newPiece.Resize(5,5);
     newPiece.Clear();
 
-    int col = rand() % numColours + 1;
-    switch (rand() % 7)
+    // Use Skillz random number generator to ensure fair play
+    int pieceType = SkillzGetRandomNumberInRange(0, 7);
+    int col = SkillzGetRandomNumberInRange(1, numColours+1);
+    switch (pieceType)
     {
     case 0:
         // 2x2 Square
@@ -971,7 +975,15 @@ void PuzzleGame::Update(int deltaTimeMs)
             if ((s3eKeyboardGetState(s3eKeyAbsASK) & S3E_KEY_STATE_PRESSED)
               || (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_PRESSED) )
             {
-                g_GameMode = MODE_TITLE;
+                if (g_GameMode == MODE_GAMEPLAY)
+                {
+                    g_GameMode = MODE_TITLE;
+                    if (SkillzTournamentIsInProgress())
+                    {
+                        SkillzReportScore(score);
+                    }
+                    Reset();
+                }
             }
         }
     }

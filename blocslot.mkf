@@ -1,8 +1,12 @@
+subprojects
+{
+    SkillzSDK
+}
+
 assets
 {
     [default]
-    (data)
-    splashscreen.jpg
+    <include "SKILLZASSETS">
 
     #Deploy .group.bin files from the 'data-ram/data-gles1' directory if they
     #have been written there by running the application in resource building

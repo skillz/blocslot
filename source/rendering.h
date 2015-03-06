@@ -23,6 +23,7 @@ class CIw2DFont;
 extern CIw2DImage* backgroundImage;
 extern CIw2DImage* starImage;
 extern CIw2DImage* logoImage;
+extern CIw2DImage* playImage;
 extern CIw2DImage* tileImage[MAX_NUM_COLOURS];
 extern CIw2DImage* touchscreenButtonImage[5];
 extern CIw2DFont* font;

@@ -25,6 +25,37 @@
 #include "effects.h"
 #include "titlescreen.h"
 
+#include "SkillzSDK.h"
+
+int32 SkillzDidFinishLaunching(void* systemData, void* appData)
+{
+    s3eDebugOutputString("Skillz integration: SkillzDidFinishLaunching");
+    return S3E_RESULT_SUCCESS;
+}
+
+int32 TournamentWillStart(void* systemData, void*appData)
+{
+    s3eDebugOutputString("Skillz integration: TournamentWillStart");
+
+    if (g_GameMode == MODE_TITLE)
+    {
+        g_GameMode = MODE_GAMEPLAY;
+    }
+    return S3E_RESULT_SUCCESS;
+}
+
+int32 SkillzWillExit(void* systemData, void* appData)
+{
+    s3eDebugOutputString("Skillz integration: SkillzWillExit");
+    return S3E_RESULT_SUCCESS;
+}
+
+int32 ScoreReported(void* systemData, void* appData)
+{
+    s3eDebugOutputString("Skillz integration: ScoreReported");
+    return S3E_RESULT_SUCCESS;
+}
+
 // Flag indicating whether the screen size or rotation has changed since the last call to SetupImages
 bool g_ScreenSizeChanged = true;
 
@@ -111,6 +142,10 @@ int main(int argc, char* argv[])
 {
     // Initialisation of Studio modules
     Iw2DInit();         // Initialise support for rendering with the standard SW renderer
+
+    // Lock orientation to portrait for Skillz integration
+    s3eSurfaceSetInt(S3E_SURFACE_DEVICE_ORIENTATION_LOCK, S3E_SURFACE_PORTRAIT);
+
     IwResManagerInit();
 
     // Load all application data
@@ -127,7 +162,16 @@ int main(int argc, char* argv[])
     PuzzleGame * game = new PuzzleGame;
     TitleScreen * title = new TitleScreen;
 
+    // Register needed Skillz callbacks
+    SkillzSDKRegister(SKILLZSDK_CALLBACK_SKILLZ_DID_LAUNCH, SkillzDidFinishLaunching, title);
+    SkillzSDKRegister(SKILLZSDK_CALLBACK_TOURNAMENT_WILL_START, TournamentWillStart, game);
+    SkillzSDKRegister(SKILLZSDK_CALLBACK_REPORT_SCORE_HAS_COMPLETED, ScoreReported, NULL);
+    SkillzSDKRegister(SKILLZSDK_CALLBACK_SKILLZ_WILL_EXIT, SkillzWillExit, title);
+
     uint32 timer = (uint32)s3eTimerGetMs();
+
+    // Initialize game based on game id given by the Skillz Developer Portal
+    SkillzInit("934", S3eSkillzSandbox);
 
     while (1)
     {
