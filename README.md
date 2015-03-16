@@ -1,4 +1,4 @@
-# Blocslots
+# Blocslot
 
 This repo demonstrates a simple Skillz SDK integration against the Marmalade
  Blocslot example project.
