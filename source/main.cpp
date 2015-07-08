@@ -164,7 +164,7 @@ int main(int argc, char* argv[])
 
     // Register needed Skillz callbacks
     SkillzSDKRegister(SKILLZSDK_CALLBACK_SKILLZ_DID_LAUNCH, SkillzDidFinishLaunching, title);
-    SkillzSDKRegister(SKILLZSDK_CALLBACK_TOURNAMENT_WILL_START, TournamentWillStart, game);
+    SkillzSDKRegister(SKILLZSDK_CALLBACK_TOURNAMENT_WILL_START_WITH_MATCH_DATA, TournamentWillStart, game);
     SkillzSDKRegister(SKILLZSDK_CALLBACK_REPORT_SCORE_HAS_COMPLETED, ScoreReported, NULL);
     SkillzSDKRegister(SKILLZSDK_CALLBACK_SKILLZ_WILL_EXIT, SkillzWillExit, title);
 
